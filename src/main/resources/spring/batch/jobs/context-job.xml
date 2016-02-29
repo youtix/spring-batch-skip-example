@@ -1,18 +1,17 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:batch="http://www.springframework.org/schema/batch" xmlns:task="http://www.springframework.org/schema/task"
-	xmlns:util="http://www.springframework.org/schema/util" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:batch="http://www.springframework.org/schema/batch" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/batch
 		http://www.springframework.org/schema/batch/spring-batch-2.2.xsd
 		http://www.springframework.org/schema/beans 
 		http://www.springframework.org/schema/beans/spring-beans-3.2.xsd">
 
-	<batch:job id="recordJob">
+	<batch:job id="skipRecordJob">
 		<batch:step id="step1">
 			<batch:tasklet>
 				<batch:chunk reader="xmlItemReader" processor="recordItemProcessor" writer="recordItemWriter" 
-					commit-interval="1" skip-limit="15">
+					commit-interval="5" skip-limit="15">
 					<batch:skippable-exception-classes>
-      					<batch:include class="java.lang.Exception" />
+      					<batch:include class="java.sql.SQLException" />
     				</batch:skippable-exception-classes>
 				</batch:chunk>
 			</batch:tasklet>

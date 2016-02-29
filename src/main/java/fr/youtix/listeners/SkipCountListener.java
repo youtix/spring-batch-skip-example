@@ -17,11 +17,11 @@ public class SkipCountListener implements SkipListener<Record, Record> {
 
 	@Override
 	public void onSkipInProcess(Record item, Throwable t) {
-		log.warn("SKIP IN PROCESSOR : " + item.getId());
+		log.warn("SKIP IN PROCESSOR : " + item);
 	}
 
 	@Override
 	public void onSkipInWrite(Record item, Throwable t) {
-		log.warn("SKIP IN WRITER " + t.getMessage());
+		log.warn("SKIP IN WRITER : " + item);
 	}
 }

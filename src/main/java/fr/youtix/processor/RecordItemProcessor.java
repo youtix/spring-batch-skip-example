@@ -27,8 +27,8 @@ public class RecordItemProcessor implements ItemProcessor<Record, Record> {
 	}
 	
 	@OnProcessError
-	public void onProcessError(Exception e) {
-		log.error("ERROR DETECTED IN PROCESSOR : " + e.getMessage());
+	public void onProcessError(Record item, Exception e) {
+		log.error("ERROR IN PROCESSOR : " + e.getMessage());
 	}
 
 }

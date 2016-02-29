@@ -23,6 +23,7 @@ public class App {
 				"spring/batch/jobs/context-service.xml",
 				"spring/batch/jobs/context-listener.xml",
 				"spring/batch/jobs/context-reader.xml",
+				"spring/batch/jobs/context-processor.xml",
 				"spring/batch/jobs/context-writer.xml",
 				"spring/batch/jobs/context-job.xml"
 			};
@@ -30,15 +31,13 @@ public class App {
 		try (ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext(springConfig)) {
 		
 			JobLauncher jobLauncher = (JobLauncher) context.getBean("jobLauncher");
-			Job job = (Job) context.getBean("recordJob");
+			Job job = (Job) context.getBean("skipRecordJob");
 			JobExecution execution = jobLauncher.run(job, new JobParameters());
 			log.info("Exit Status : " + execution.getStatus());
 
 		} catch (Exception e) {
 			log.error(e);
 		}
-
-		log.info("Done");
 
 	}
 }

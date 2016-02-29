@@ -5,7 +5,7 @@
 	<bean id="recordUnmarshaller" class="org.springframework.oxm.jaxb.Jaxb2Marshaller">
 		<property name="classesToBeBound">
 			<list>
-				<value>com.mkyong.model.Record</value>
+				<value>fr.youtix.model.Record</value>
 			</list>
 		</property>
 	</bean>

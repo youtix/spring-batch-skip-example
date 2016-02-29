@@ -30,7 +30,7 @@ public class RecordJdbcBatchItemWriter extends JdbcBatchItemWriter<Record>{
 	
 	@OnWriteError
 	public void onWriteError(Exception exception, List<? extends Record> items) {
-		log.error("ERROR DETECTED IN WRITER " + exception.getMessage());
+		log.error("ERROR IN WRITER " + exception.getMessage());
 	}
 
 }
